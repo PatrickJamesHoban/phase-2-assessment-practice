@@ -20,9 +20,9 @@
 </head>
 <div class="header-nav-bar-wrapper">
   <% if logged_in? %>
-    <%= erb :'/users/_logged_in', layout: false %>
+    <%= erb :'/users/_logged_in' %>
   <% else %>
-    <%= erb :'/users/_logged_out', layout: false %>
+    <%= erb :'/users/_logged_out' %>
   <% end %>
 </div>
 <body>
