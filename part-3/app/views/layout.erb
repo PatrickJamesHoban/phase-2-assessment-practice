@@ -12,11 +12,19 @@
   -->
   <link rel="stylesheet" href="/css/application.css">
 
-  <script src="/js/jquery.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <!-- <script src="/js/jquery.js"></script> -->
   <script src="/js/application.js"></script>
 
-  <title></title>
+  <title>Pat's Potluck Parties</title>
 </head>
+<div class="header-nav-bar-wrapper">
+  <% if logged_in? %>
+    <%= erb :'/users/_logged_in', layout: false %>
+  <% else %>
+    <%= erb :'/users/_logged_out', layout: false %>
+  <% end %>
+</div>
 <body>
   <%= yield %>
 </body>

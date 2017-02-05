@@ -1,0 +1,26 @@
+<!-- Header partial if user is logged in -->
+<table class="nav-wrapper">
+  <tr class="nav-list">
+    <td>
+      <h1>Potluck Party</h1>
+    </td>
+    <!-- Home page link -->
+    <td>
+      <a><%= @user.try(:username) %> | </a>
+    </td>
+
+    <!-- Profile page link -->
+    <td>
+      <a href="/users/<%= session[:user_id] %>">Host a Potluck | </a>
+    </td>
+
+    <!-- Logout button -->
+    <td>
+      <form action="/sessions/:id" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input id="logout button" class="" type="submit" value="logout">
+      </form>
+    </td>
+
+  </tr>
+</table>

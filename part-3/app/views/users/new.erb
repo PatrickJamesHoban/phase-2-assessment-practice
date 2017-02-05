@@ -1,0 +1,17 @@
+<!-- Register a new user view -->
+
+<h1>Register New User</h1>
+
+<!-- Render an errors partial if errors exist. -->
+<% if @errors %>
+  <%= erb :'./_errors' %>
+<% end %>
+
+<!-- Form user will fill out to create a new user. -->
+<form id="new-user-form" method="POST" action="/users">
+  <input type="text" name="user[username]" placeholder="First Name" value="<%= @user.username %>"/>
+  <input type="email" name="user[email]" placeholder="Email" value="<%= @user.email %>"/>
+  <input type="password" name="user[password]" placeholder="Password"/>
+  <input type="submit" name="Register"/>
+</form>
+
