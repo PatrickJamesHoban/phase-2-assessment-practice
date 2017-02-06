@@ -7,7 +7,7 @@
     <% if @errors %>
       <ul>
         <% @errors.each do |error| %>
-          <li><%= error %><li>
+          <li><%= error %></li>
         <% end %>
       </ul>
     <% end %>
@@ -22,7 +22,7 @@
       <input type="text" name="potluck[location]" placeholder="Potluck Location" value="<%= @potluck.try(:location) %>">
 
       <label for="potluck[starts_at]">Starts at:</label>
-      <input type="datetime" name="potluck[starts_at]" placeholder="Potluck Starts At" value="<%= @potluck.try(:starts_at) %>">
+      <input type="datetime-local" name="potluck[starts_at]" placeholder="Potluck Starts At" value="<%= @potluck.try(:starts_at) %>">
 
       <input type="hidden" name="potluck[host_id]" value="<%= session[:user_id]%>">
       <input type="submit" name="Create New Potluck">

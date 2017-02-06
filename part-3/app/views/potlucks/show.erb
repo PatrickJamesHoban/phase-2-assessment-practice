@@ -5,9 +5,9 @@
 
   <p>Location: <%= @potluck.location %></p>
 
-  <p>Date: <%= @potluck.starts_at %></p>
+  <p>Date: <%= @potluck.starts_at.to_date %></p>
 
-  <p>Time: <%= @potluck.starts_at %></p>
+  <p>Time: <%= @potluck.starts_at.strftime("%I:%M %p") %></p>
 
   <p>Host: <%= @potluck.host.username %></p>
 

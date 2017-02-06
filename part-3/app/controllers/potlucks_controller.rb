@@ -1,7 +1,7 @@
 
 # display list of all potlucks
 get '/potlucks' do
-  @potlucks = Potluck.all
+  @potlucks = Potluck.select_future_potlucks
   erb :'/potlucks/index'
 end
 
@@ -19,7 +19,7 @@ post '/potlucks' do
     if @potluck.save
       redirect "/potlucks/#{@potluck.id}"
     else
-      @errors = @potlucks.errors.full_messages
+      @errors = @potluck.errors.full_messages
       erb :'/potlucks/new'
     end
   else
