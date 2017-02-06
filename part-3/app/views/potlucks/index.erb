@@ -1,0 +1,12 @@
+<!-- display a list of all potlucks -->
+
+<h1>Upcoming Potlucks</h1>
+
+<div class="potluck-list-wrapper">
+  <% @potlucks.each do |potluck| %>
+    <span>
+      <li><a href="/potlucks/<%= potluck.id %>"></a></li>
+      <p><%= potluck.starts_at %> at <%= potluck.location %></p>
+    </span>
+  <% end %>
+</div>

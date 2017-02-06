@@ -1,12 +1,13 @@
 
 # display list of all potlucks
 get '/potlucks' do
-  
+  @potlucks = Potluck.all
+  erb :'/potlucks/index'
 end
 
 # return form to create a new potluck
 get '/potlucks/new' do
-  
+  erb :'/potlucks/new'
 end
 
 # create new potluck

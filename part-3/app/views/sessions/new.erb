@@ -1,0 +1,18 @@
+<!-- Login form for user -->
+
+<% if @errors %>
+  <%= @errors %>
+<% end %>
+
+<div class="login-form">
+  <form action="/sessions" method="post">
+    <label for="user[username]">Username:</label>
+    <input class="form-control" type="text" name="user[username]"><br><br>
+
+    <label for="user[password]">Password:</label>
+    <input class="form-control" type="password" name="user[password]"><br><br>
+
+    <!--value="something" is what the button on the form will display. -->
+    <input type="submit" value="Login">
+  </form>
+</div>
