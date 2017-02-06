@@ -1,0 +1,8 @@
+<!-- show the list of all rsvps for a single potluck -->
+<div class="list-rsvps-for-potluck-wrapper rsvp-index-wrapper">
+  <h1>Attendees:</h1>
+
+  <% @potluck.rsvps.each do |rsvp| %>
+    <li><%= rsvp.attendee.username %> will bring <%= rsvp.dish %>.</li>
+  <% end %>
+</div>

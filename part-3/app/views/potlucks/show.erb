@@ -44,3 +44,11 @@
   <% end %>
 </div>
 
+
+<!-- show the list of all rsvps for a single potluck -->
+<div class="potluck-attendees-wrapper">
+  <% if @potluck.rsvps.any? %>
+    <%= erb :'./rsvps/index', layout: false, locals: { potluck: @potluck } %>
+  <% end %>
+</div>
+

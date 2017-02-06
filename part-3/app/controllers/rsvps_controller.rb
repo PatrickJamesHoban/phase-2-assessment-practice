@@ -18,7 +18,7 @@ post '/potlucks/:id/rsvps' do
     if @potluck.attendees.include?(@potential_attendee)
       p "HERE"
     else
-      @rsvp = @potluck.attendees.create(params[:rsvp])
+      @rsvp = @potluck.rsvps.build(params[:rsvp])
       p "RSVP"
       p @rsvp
       if @rsvp.save

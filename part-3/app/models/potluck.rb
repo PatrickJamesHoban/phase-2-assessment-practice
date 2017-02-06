@@ -1,5 +1,6 @@
 class Potluck < ActiveRecord::Base
-  has_many :attendees, class_name: :Rsvp, foreign_key: :atendee_id
+  has_many :rsvps
+  has_many :attendees, through: :rsvps, source: :attendee
   belongs_to :host, class_name: :User
 
   validates :name, :location, :starts_at, presence: true
