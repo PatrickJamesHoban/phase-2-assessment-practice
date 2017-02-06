@@ -10,7 +10,7 @@ post '/sessions' do
   @user = User.find_by(username: params[:user][:username]).try(:authenticate, params[:user][:password])
   if @user
     set_user(@user)
-    redirect '/potlucks/index'
+    redirect '/potlucks'
   else
     @errors = ['Incorrect username or password.']
     erb :'/sessions/new' # Returns user to login page
@@ -20,5 +20,6 @@ end
 # Logout
 delete '/sessions/:id' do
   session.delete(:user_id)
+  session.clear
   redirect '/sessions/new'
 end
