@@ -13,6 +13,17 @@
 
 </div>
 
+<!-- if user logged in, but not the host show form to attend -->
+<div class="attend-potluck-wrapper">
+  <% if logged_in? %>
+    <% if @potluck.host != current_user %>
+      <% if !@potluck.attendees.include?(User.find(session[:user_id]))%>
+        <%= erb :'./rsvps/new', locals: { potluck: @potluck } %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
 <!-- show edit potluck button only to host -->
 <div class="edit-potluck-button-wrapper">
   <% if logged_in? %>

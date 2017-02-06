@@ -1,0 +1,32 @@
+
+<!-- allow users to attend potlucks -->
+
+<div class="new-potluck-attendee-wrapper">
+
+  <h1>Attend this Potluck</h1>
+
+  <div class="new-rsvp-form-errors">
+    <% if @errors %>
+      <ul>
+        <% @errors.each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+
+  <div class="new-rsvp-form">
+    <form method="post" action="/potlucks/<%= @potluck.id %>/rsvps">
+      <label for="rsvp[dish]">What dish will you bring?</label>
+      <br>
+      <br>
+      <input type="text" name="rsvp[dish]" value="<%= @potluck.try(:dish)%>">
+      <input type="hidden" name="rsvp[attendee_id]" value="<%= session[:user_id] %>">
+      <input type="hidden" name="rsvp[potluck_id]" value="<%= @potluck.id %>">
+      <br>
+      <br>
+      <input type="submit" name="attend" value="Sign up">
+    </form>
+  </div>
+
+</div>
