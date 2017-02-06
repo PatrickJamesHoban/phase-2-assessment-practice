@@ -5,7 +5,7 @@
 <div class="potluck-list-wrapper">
   <% @potlucks.each do |potluck| %>
     <span>
-      <li><a href="/potlucks/<%= potluck.id %>"></a></li>
+      <p><a href="/potlucks/<%= potluck.id %>"><%= potluck.name %></a></p>
       <p><%= potluck.starts_at %> at <%= potluck.location %></p>
     </span>
   <% end %>

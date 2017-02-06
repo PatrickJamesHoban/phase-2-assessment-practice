@@ -1,3 +1,25 @@
 <!-- display a specific potluck with it's details -->
 
-<h1>Welcome to potluck show page, display specific potluck</h1>
+<div class=show-potluck-wrapper>
+  <h2><%= @potluck.name %></h2>
+
+  <p>Location: <%= @potluck.location %></p>
+
+  <p>Date: <%= @potluck.starts_at %></p>
+
+  <p>Time: <%= @potluck.starts_at %></p>
+
+  <p>Host: <%= @potluck.host.username %></p>
+
+</div>
+
+<!-- show edit potluck button only to host -->
+<div class="edit-potluck-button-wrapper">
+  <% if logged_in? %>
+    <% if @potluck.host == current_user %>
+      <button class="edit-potluck-button">
+        <a href="/potlucks/<%= @potluck.id %>/edit">Edit Potluck Info</a>
+      </button>
+    <% end %>
+  <% end %>
+</div>

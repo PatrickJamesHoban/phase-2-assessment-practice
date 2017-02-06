@@ -12,8 +12,8 @@ end
 
 # create new potluck
 post '/potlucks' do
-  p params[:potluck]
-  params.inspect
+  # p params[:potluck]
+  # params.inspect
   @potluck = Potluck.new(params[:potluck])
   if logged_in?
     if @potluck.save
@@ -35,15 +35,32 @@ get '/potlucks/:id' do
   erb :'/potlucks/show'
 end
 
-# # display form for editing a potluck
-# get '/potlucks/:id/edit' do
+# display form for editing a potluck
+get '/potlucks/:id/edit' do
+  @potluck = Potluck.find_by(id: params[:id])
+  if current_user == @potluck.host
+    erb :'/potlucks/edit'
+  else
+    redirect "/potlucks/#{params[:id]}"
+  end
+end
 
-# end
-
-# # edit a potluck
-# put '/potlucks/:id' do
-
-# end
+# edit a potluck
+put '/potlucks/:id' do
+  p params
+  @potluck = Potluck.find_by(id: params[:id])
+  if current_user == @potluck.host
+    @potluck.update_attributes(params[:potluck])
+    if @potluck.valid?
+      erb :'/potlucks/show'
+    else
+      @errors = @potluck.errors.full_messages
+      erb :'/potlucks/edit'
+    end
+  else
+    redirect "/potlucks/#{params[:id]}"
+  end
+end
 
 # delete a potluck
 # delete '/potlucks/:id' do

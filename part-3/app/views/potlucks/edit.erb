@@ -1,20 +1,22 @@
-<!-- Create a new Potluck -->
-<div class="new-potluck-wrapper">
+<!-- Form for user to edit current entry -->
 
-  <h1>Create a new Potluck!</h1>
+<div>
+  
+<h1>Edit Potluck Info:</h1>
 
   <div>
     <% if @errors %>
       <ul>
         <% @errors.each do |error| %>
-          <li><%= error %><li>
+          <li><%= error %></li>
         <% end %>
       </ul>
     <% end %>
   </div>
 
-  <div class="new-potluck-form-wrapper">
-    <form method="post" action="/potlucks">
+<div class="edit-potluck-form-wrapper">
+  <form method="post" action="/potlucks/<%= @potluck.id %>">
+    <input type="hidden" name="_method" value="put">
       <label for="potluck[name]">Name:</label>
       <input type="text" name="potluck[name]" placeholder="Potluck Name" value="<%= @potluck.try(:name) %>">
 
@@ -22,11 +24,9 @@
       <input type="text" name="potluck[location]" placeholder="Potluck Location" value="<%= @potluck.try(:location) %>">
 
       <label for="potluck[starts_at]">Starts at:</label>
-      <input type="datetime" name="potluck[starts_at]" placeholder="Potluck Starts At" value="<%= @potluck.try(:starts_at) %>">
+      <input type="text" name="potluck[starts_at]" placeholder="Potluck Starts At" value="<%= @potluck.try(:starts_at) %>">
 
       <input type="hidden" name="potluck[host_id]" value="<%= session[:user_id]%>">
-      <input type="submit" name="Create New Potluck">
-    </form>
-  </div>
-
+    <input type="submit" name="Update Potluck Info" value="Update Potluck Info">
+  </form>
 </div>
