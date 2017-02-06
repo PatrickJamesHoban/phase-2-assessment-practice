@@ -63,6 +63,14 @@ put '/potlucks/:id' do
 end
 
 # delete a potluck
-# delete '/potlucks/:id' do
-
-# end
+delete '/potlucks/:id' do
+  p "DELETE" * 100
+  p params
+  @potluck = Potluck.find_by(id: params[:id])
+  if current_user == @potluck.host
+    @potluck.destroy
+    redirect "/potlucks"
+  else
+    redirect "/potlucks/#{params[:id]}"
+  end
+end

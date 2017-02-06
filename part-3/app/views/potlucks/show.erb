@@ -19,7 +19,17 @@
     <% if @potluck.host == current_user %>
       <button class="edit-potluck-button">
         <a href="/potlucks/<%= @potluck.id %>/edit">Edit Potluck Info</a>
-      </button>
+      </button><br><br>
     <% end %>
   <% end %>
 </div>
+
+<!-- show delete potluck button only to host -->
+<div class="delete-potluck-button-wrapper">
+  <% if logged_in? %>
+    <% if @potluck.host == current_user %>
+      <%= erb :'/potlucks/_delete_potluck', layout: false, locals: { potluck: @potluck } %>
+    <% end %>
+  <% end %>
+</div>
+

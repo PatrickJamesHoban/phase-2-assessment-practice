@@ -1,8 +1,8 @@
 <!-- delete potluck form -->
 
 <div class="delete-potluck-form">
-  <form method="post" action="/potlucks/:id">
+  <form method="post" action="/potlucks/<%= @potluck.id %>">
     <input type="hidden" name="_method" value="delete">
-    <input type="submit" name="Delete Potluck">
+      <input type="submit" name="Delete Potluck" value="Delete Potluck">
   </form>
 </div>
